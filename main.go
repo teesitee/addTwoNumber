@@ -3,17 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	x := -393
+	x := 11211
 	if x <= 0 {
 		fmt.Println("Palindrome : false")
 		return
 	}
 	forCount := x
 	count := 0
+
 	for forCount > 0 {
 		forCount /= 10
 		count++
 	}
+	reCount := count
 	var number []int
 	var s int
 	var s2 int
@@ -34,11 +36,20 @@ func main() {
 		devine /= 10
 	}
 	fmt.Println(number)
-	lenght := len(number)
-	if number[0] == number[lenght-1] {
-		fmt.Println("Palindrome : true")
-		return
-	} else {
-		fmt.Println("Palindrome : false")
+
+	var reNumber []int
+	for i := range number {
+		reNumber = append(reNumber, number[reCount-1-i])
 	}
+	fmt.Println("renumber :", reNumber)
+	for i := range number {
+		if number[i] == reNumber[i] {
+			continue
+		} else {
+			fmt.Println("Palindrome : false")
+			return
+		}
+	}
+	fmt.Println("Palindrome : true")
+
 }
